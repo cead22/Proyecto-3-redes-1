@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="ISO­8859­1"?>
+<foto>
+   <titulo>
+	marion la mas bella
+   </titulo>
+   <pelicula="negro"/>
+   <autor name="Marion Carambula"/>
+   <descripcion>
+	No hay persona que se compare con marion, ella es la mas bella y mejor de todas.
+   </descripcion>
+   <palabrasClave>
+       <entrada palabra="perfeccion"/>
+      <entrada palabra="belleza"/>
+	  <entrada palabra="persona"/>
+   </palabrasClave>
+   <exposicion tiempo="5" stop="f1.4"/>
+</foto>
+

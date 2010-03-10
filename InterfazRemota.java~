@@ -1,0 +1,9 @@
+import java.rmi.*;
+import java.io.Serializable;
+
+/** Interfaz con los métodos que se
+ * pueden llamar remotamente */
+
+public interface InterfaceRemota extends Remote {
+    public SalidaDFS dfs_distribuido (String busqueda, Vector<String> visitados);
+}

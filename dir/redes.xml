@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="ISO­8859­1"?>
+<foto>
+   <titulo>
+	redes
+   </titulo>
+   <pelicula="negro"/>
+   <autor name="Carlos Alvarez"/>
+   <descripcion>
+		redes peluo trampa preguntas dificiles 
+	</descripcion>
+   <palabrasClave>
+       <entrada palabra="desgracia"/>
+      <entrada palabra="pregunta"/>
+	  <entrada palabra="materia"/>
+   </palabrasClave>
+   <exposicion tiempo="5" stop="f1.4"/>
+</foto>
+

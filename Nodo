@@ -1,0 +1,9 @@
+#!/bin/bash
+
+export CLASSPATH=./nanoxml-lite-2.2.3.jar:.
+
+export PATH=$PATH:/usr/bin
+
+java nodo $1 $2 $3 $4 $5 $6 $7 $8
+
+
