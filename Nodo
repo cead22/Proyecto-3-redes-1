@@ -8,6 +8,4 @@ javac nodo.java
 
 rmic -d . nodo
 
-java -Djava.rmi.server.hostname=localhost nodo $*
-
-
+java -Djava.rmi.server.hostname=127.0.0.1 nodo $*

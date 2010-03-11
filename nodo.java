@@ -467,12 +467,18 @@ public class nodo extends java.rmi.server.UnicastRemoteObject implements Interfa
 	InterfazRemota ir;
 	SalidaDFS sal;
 	
+	if (archivos_xml == null) {
+	    System.err.println("Directorio " + directorio + " no existe");
+	}
+	else {
+	
 	// busqueda local //
-	for (int i = 0; i < archivos_xml.length; i++) {
-	    if (!(foto = match(directorio + "/" +archivos_xml[i], busqueda)).equals("<no/>")){
-		resultado = resultado + "\n===\n+ Archivo: " + archivos_xml[i].substring(0,archivos_xml[i].length()-4) + "\n" + foto + "\n";
+	    for (int i = 0; i < archivos_xml.length; i++) {
+		if (!(foto = match(directorio + "/" +archivos_xml[i], busqueda)).equals("<no/>")){
+		    resultado = resultado + "\n===\n+ Archivo: " + archivos_xml[i].substring(0,archivos_xml[i].length()-4) + "\n" + foto + "\n";
+		}
+		
 	    }
-	 
 	}
 
 	// marcar como visitado //
