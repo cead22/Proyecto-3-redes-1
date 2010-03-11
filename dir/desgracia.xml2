@@ -1,17 +1,18 @@
 <?xml version="1.0" encoding="ISO­8859­1"?>
 <foto>
    <titulo>
-	redes y
+	el desgraciado
    </titulo>
    <pelicula="negro"/>
-   <autor name="Carlos Alvarez"/>
+   <autor name="Marion Carambula"/>
    <descripcion>
-		redes peluo trampa preguntas dificiles 
-	</descripcion>
+	Carlitos es el mas desgraciado de todos, es un sapo
+	aunque no lo admita.
+   </descripcion>
    <palabrasClave>
        <entrada palabra="desgracia"/>
-      <entrada palabra="pregunta"/>
-	  <entrada palabra="materia"/>
+      <entrada palabra="sapo"/>
+	  <entrada palabra="antiperfeccion"/>
    </palabrasClave>
    <exposicion tiempo="5" stop="f1.4"/>
 </foto>

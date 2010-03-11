@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="ISO­8859­1"?>
+<foto>
+   <titulo>
+sol luna mar arena playa palma 
+   </titulo>
+   <pelicula="color"/>
+   <autor name="Carlos Perez"/>
+   <descripcion>
+	un dia soleado con mucho sol y calor amarillo estrellla grande 
+tierra
+   </descripcion>
+   <palabrasClave>
+       <entrada palabra="oceano"/>
+      <entrada palabra="Costa de Marfil"/>
+   </palabrasClave>
+   <exposicion tiempo="5" stop="f1.4"/>
+</foto>
+

@@ -322,7 +322,7 @@ public class fotos {
 	    System.err.println("No existe el servicio solicitado en " + maq + ":" + puerto);
 	}
 	catch (MalformedURLException m) {
-	    System.err.println("URL incorrecta");
+	    System.err.println("No se pudo establecer conexion con el servidor: URL incorrecta");
 	}
 	catch (RemoteException r) {
 	    System.err.println("No se pudo establecer conexion con el servidor");

@@ -464,6 +464,8 @@ public class nodo extends java.rmi.server.UnicastRemoteObject implements Interfa
 	//ObjectOutputStream salida = null;
 	//ObjectInputStream entrada = null;
 	String foto;
+	InterfazRemota ir;
+	SalidaDFS sal;
 	
 	// busqueda local //
 	for (int i = 0; i < archivos_xml.length; i++) {
@@ -477,18 +479,26 @@ public class nodo extends java.rmi.server.UnicastRemoteObject implements Interfa
 	visitados.add(mi_ip());
 
 	// busqueda remota //
-	try {
-	    for (int i = 0; i < nodos_vecinos.size(); i++) {
-		if (!visitados.contains(nodos_vecinos.elementAt(i))){
-		    resultado = resultado + "\n" + nodos_vecinos.elementAt(i);
+	for (int i = 0; i < nodos_vecinos.size(); i++) {
+	    if (!visitados.contains(nodos_vecinos.elementAt(i))){
+		try {
+		    System.out.println("//" + nodos_vecinos.elementAt(i) + ":" + puerto + "/fotop2p");
+		    ir = (InterfazRemota)java.rmi.Naming.lookup("//" + nodos_vecinos.elementAt(i) + ":" + puerto + "/fotop2p");
+		    sal = ir.dfs_distribuido(busqueda, visitados);
+		    resultado = resultado + sal.resultado;
+		    visitados = sal.visitados;
+		}
+		catch (NotBoundException e) {
+		    System.err.println("No existe el servicio solicitado en " + nodos_vecinos.elementAt(i) + ":" + puerto);
+		}
+		catch (MalformedURLException m) {
+		    System.err.println("No se pudo establecer conexion con el servidor: URL incorrecta");
+		}
+		catch (RemoteException r) {
+		    System.err.println("No se pudo establecer conexion con el servidor en " + nodos_vecinos.elementAt(i));
 		}
 	    }
-	  
-	}
-	catch (Exception e){
-	    System.err.println(e.getMessage());
-	    e.printStackTrace();
-	} 
+	}	   
 	return new SalidaDFS(resultado,visitados);
     }
 
