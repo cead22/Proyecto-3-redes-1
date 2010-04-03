@@ -8,6 +8,3 @@ fotos.class : fotos.java
  
 explorador.class : explorador.java
 	javac -classpath nanoxml-lite-2.2.3.jar:. explorador.java
-
-SalidaDFS.class : explorador.java
-	javac -classpath nanoxml-lite-2.2.3.jar:. SalidaDFS.java
