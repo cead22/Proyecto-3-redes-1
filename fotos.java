@@ -31,7 +31,13 @@ public class fotos {
 	    if (cmd[1].equalsIgnoreCase("-t") || cmd[1].equalsIgnoreCase("-k")){
 		try {
 		    SalidaDFS salida = interfaz.dfs_distribuido(cmd[1] + " " + cmd[2], new Vector<String>());
-		    System.out.println(salida.resultado);
+		    if ((salida.resultado).equals("")){
+			System.out.println("No hubo resultados \n");
+		    }
+		    else {
+			System.out.println(salida.resultado);
+		    }
+		    
 		}
 		catch (java.rmi.RemoteException r) {
 		    System.err.println("No se pudo establecer conexion con el servidor");
@@ -76,6 +82,8 @@ public class fotos {
 		    FileOutputStream fos = new FileOutputStream("./" + archivo);
 		    BufferedOutputStream bos = new BufferedOutputStream(fos);
 		    bos.write(foto,0,foto.length);
+		    System.out.println("Foto recibida exitosamente \n");
+
 		}
 	    }
 	    catch (java.rmi.RemoteException r) {
@@ -180,20 +188,19 @@ public class fotos {
 
 	/* Obtener interfaz con metodos remotos */
 	try {
-	    System.out.println("//" + maq + ":" + puerto + "/fotop2p");
 	    interfaz = (InterfazRemota)java.rmi.Naming.lookup("//" + maq + ":" + puerto + "/fotop2p");
-	    System.out.println("entro");
+	    System.out.println("Conexion establecida con "+ maq);
 	}
 	catch (NotBoundException e) {
-	    System.err.println("No existe el servicio solicitado en " + maq + ":" + puerto);
+	    System.err.println("No existe el servicio solicitado en " + maq + ":" + puerto+ "\n");
 	    System.exit(-1);
 	}
 	catch (MalformedURLException m) {
-	    System.err.println("No se pudo establecer conexion con el servidor: URL incorrecta");
+	    System.err.println("No se pudo establecer conexion con el servidor: URL incorrecta \n");
 	    System.exit(-1);
 	}
 	catch (java.rmi.RemoteException r) {
-	    System.err.println("No se pudo establecer conexion con el servidor");
+	    System.err.println("No se pudo establecer conexion con el servidor \n");
 	    System.exit(-1);
 	}
       

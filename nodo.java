@@ -22,8 +22,8 @@ public class nodo extends java.rmi.server.UnicastRemoteObject implements Interfa
     private static String directorio;
     /** computadores alcanzables desde este */
     private static Vector<String> nodos_vecinos;
+    /** traza sobre la que se escribira las operaciones realizadas*/
     private BufferedWriter traza;
-
 
    /** 
     * Crea un nodo a partir de un puerto y un directorio.
@@ -37,11 +37,10 @@ public class nodo extends java.rmi.server.UnicastRemoteObject implements Interfa
 	    traza = new BufferedWriter(new FileWriter(t,true));
 	}
 	catch (Exception e){
-		System.err.println("Error con la traza");
+	    System.err.println("Error con la traza");
 	}
-
     }
-
+	
     /** 
      * Obtiene las vecinos de un nodo y los almacena en
      * un vector.
@@ -119,6 +118,7 @@ public class nodo extends java.rmi.server.UnicastRemoteObject implements Interfa
 	NetworkInterface ni;
 	String ip;
 	try {
+	    /*Se exploran las interfaces disponibles para obtener el ip publico*/
 	    e1 = NetworkInterface.getNetworkInterfaces();
 	    while(e1.hasMoreElements()) {
 		ni = (NetworkInterface) e1.nextElement();
@@ -136,10 +136,13 @@ public class nodo extends java.rmi.server.UnicastRemoteObject implements Interfa
 	}
 	return "conexion nula";
     }
-
+    
+    /** 
+     * Lleva a cabo un dfs para obtener informacion sobre los nodos alcanzables
+     * @param visitados Representa el vector de nodos que ya fueron visitados previamente.
+     */
     public Vector<String> alcanzables (Vector<String> visitados){
 	InterfazRemota ir = null;
-	
 	try{
 	    traza.write("Consulta  A recibida desde " + mi_ip() + "\n");
 	    traza.flush();
@@ -147,15 +150,15 @@ public class nodo extends java.rmi.server.UnicastRemoteObject implements Interfa
 	catch(Exception e){
 	    System.err.println("Error al escribir en la traza");
 	}
-
+	
 	/* marcar como visitado */
 	visitados.add(mi_ip());
-
+	
 	/* busqueda remota */
 	for (int i = 0; i < nodos_vecinos.size(); i++) {
 	    if (!visitados.contains(nodos_vecinos.elementAt(i))){
 		try {
-		    System.out.println("//" + nodos_vecinos.elementAt(i) + ":" + puerto + "/fotop2p");
+		    /* Creacion de una interfaz para establecer conexion con los vecinos */
 		    ir = (InterfazRemota)java.rmi.Naming.lookup("//" + nodos_vecinos.elementAt(i) + ":" + puerto + "/fotop2p");
 		    visitados = ir.alcanzables(visitados);
 		}
@@ -176,6 +179,9 @@ public class nodo extends java.rmi.server.UnicastRemoteObject implements Interfa
 	return visitados;
     }
     
+
+	
+	
     /** 
      * Lleva a cabo un dfs para obtener informacion sobre los nodos vecinos
      * @param busqueda Indica que tipo de busqueda se esta realizado: por titulo o por palabras claves.
@@ -196,7 +202,7 @@ public class nodo extends java.rmi.server.UnicastRemoteObject implements Interfa
 	catch(Exception e){
 	    System.err.println("Error al escribir en la traza");
 	}
-
+	
 	if (archivos_xml == null) {
 	    System.err.println("Directorio " + directorio + " no existe");
 	}
@@ -237,7 +243,6 @@ public class nodo extends java.rmi.server.UnicastRemoteObject implements Interfa
 	}	   
 	return new SalidaDFS(resultado,visitados);
     }
-
 
     
     /** 
@@ -322,6 +327,11 @@ public class nodo extends java.rmi.server.UnicastRemoteObject implements Interfa
     }
 
 
+    /** 
+     * Envia una foto que ha sido solicitada
+     * @param archivo Archivo que se desea enviar.
+     * @return un arreglo de bytes que representa la foto
+     */
     public byte[] archivo_a_bytes(String archivo) {
 	try{
 	    traza.write("Peticion de la foto " + archivo + " recibida desde " + mi_ip() + "\n");
@@ -330,7 +340,6 @@ public class nodo extends java.rmi.server.UnicastRemoteObject implements Interfa
 	catch(Exception e){
 	    System.err.println("Error al escribir en la traza");
 	}
-	
 	try {
 	    File foto = new File (directorio + "/" + archivo);
 	    byte [] bytes_foto  = new byte [(int)foto.length()];
@@ -348,6 +357,7 @@ public class nodo extends java.rmi.server.UnicastRemoteObject implements Interfa
 	    return null;
 	}
     }
+
 
     public static void main(String args[]) throws Exception {
 	int port = 0;
@@ -388,22 +398,10 @@ public class nodo extends java.rmi.server.UnicastRemoteObject implements Interfa
 	}
 		
 	if (!(check[0] && check[1] && check[2] && check[3])) uso();
-	//nodo servidor = new nodo(puerto,directorio);
 	nodos_vecinos = Vecinos(maquinas);
-	//this.puerto = puerto;
-	//this.directorio = directorio;
-
 	InterfazRemota ir = new nodo(puerto,directorio,traza);
-	System.err.println("//" + java.net.InetAddress.getLocalHost().getHostAddress() +
-			   ":" + puerto + "/fotop2p");
 	Naming.rebind("//" + java.net.InetAddress.getLocalHost().getHostAddress() +
                              ":" + puerto + "/fotop2p", ir);
-	
-	/*
-	while(true){
-	    servidor.run(puerto, maquinas, traza);
-	}
-	*/
     }
 }
 
