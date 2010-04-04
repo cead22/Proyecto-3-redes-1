@@ -1,0 +1,2 @@
+ip=`GET checkip.dyndns.org|sed -e 's/.*Current IP Address: //' -e 's/<.*$//'`
+echo $ip

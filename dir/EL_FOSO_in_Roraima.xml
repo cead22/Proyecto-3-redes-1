@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<foto>
+<titulo>
+Foso en Roraima
+</titulo>
+<pelicula valor="color"/>
+<autor name="Yosemite"/>
+<descripcion>
+Foso de agua en Roraima
+</descripcion>
+<palabrasClave>
+<entrada palabra="Roraima"/>
+<entrada palabra="Foso"/>
+</palabrasClave>
+<exposicion tiempo="5" stop="f1.4"/>
+</foto>

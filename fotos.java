@@ -21,7 +21,7 @@ public class fotos {
      * @param interfaz Interfaz con comandos que se pueden ejecutar
      * remotamente
      */
-    private void verificar_comando(String comando, InterfazRemota interfaz) {
+    private void verificar_comando(String comando, InterfazRemota interfaz, int puerto) {
 	String cmd[] = comando.split("[\\s]+");
 	String aux[];
 	String servidor;
@@ -49,13 +49,32 @@ public class fotos {
 	    servidor = aux[0];
 	    archivo = aux[1];
 	    try {
-		FileOutputStream fos = new FileOutputStream("./" + archivo);
-		BufferedOutputStream bos = new BufferedOutputStream(fos);
-		byte [] foto = interfaz.archivo_a_bytes(archivo);
+		InterfazRemota transferencia = null;
+		
+		try {
+		    transferencia = (InterfazRemota)java.rmi.Naming.lookup("//" + servidor + ":" + puerto + "/fotop2p");
+		}
+		catch (NotBoundException e) {
+		    System.err.println("No existe el servicio solicitado en " + servidor + ":" + puerto);
+		    System.exit(-1);
+		}
+		catch (MalformedURLException m) {
+		    System.err.println("No se pudo establecer conexion con el servidor: URL incorrecta");
+		    System.exit(-1);
+		}
+		catch (java.rmi.RemoteException r) {
+		    System.err.println("No se pudo establecer conexion con el servidor");
+		    System.exit(-1);
+		}
+
+		byte [] foto = transferencia.archivo_a_bytes(archivo);
+		
 		if (foto == null) {
 		    System.out.println("Foto no encontrada o error al abrirla en el servidor");
 		}
 		else {
+		    FileOutputStream fos = new FileOutputStream("./" + archivo);
+		    BufferedOutputStream bos = new BufferedOutputStream(fos);
 		    bos.write(foto,0,foto.length);
 		}
 	    }
@@ -76,14 +95,17 @@ public class fotos {
 		System.out.println("Alcanzables: " + alc.size());
 	    }
 	    catch (java.rmi.RemoteException r) {
-		System.err.println("No se pudo establecer conexion con el servidor");
+		System.out.println("No se pudo establecer conexion con el servidor");
+		
+		System.out.println(r.getMessage());
+		r.printStackTrace();
 	    }
 	    finally {
 		return;
 	    }
 	}
 	/* Salir */
-	else if (cmd[0].equalsIgnoreCase("Q") && cmd.length == 1){
+	else if (cmd[0].equalsIgnoreCase("Q") && cmd.length == 1 ){
 	    System.out.println("Chao");
 	    System.exit(0);
 	}
@@ -98,7 +120,7 @@ public class fotos {
      * sobre fotos, que se encuentran en una 'base de datos'
      * fotografica distribuida, y permite descargarlas.
      */
-    public void run(InterfazRemota interfaz) {
+    public void run(InterfazRemota interfaz, int puerto) {
 	String con = null;
 	String [] cmd;
 	BufferedReader br;
@@ -111,7 +133,7 @@ public class fotos {
 	    try {
 		br = new BufferedReader(new InputStreamReader(System.in));
 		mensaje = br.readLine();
-		verificar_comando(mensaje, interfaz);
+		verificar_comando(mensaje, interfaz,puerto);
 	    }
 	    catch (IOException e) {
 		System.err.println("Error al leer de la entrada estandar");
@@ -160,18 +182,22 @@ public class fotos {
 	try {
 	    System.out.println("//" + maq + ":" + puerto + "/fotop2p");
 	    interfaz = (InterfazRemota)java.rmi.Naming.lookup("//" + maq + ":" + puerto + "/fotop2p");
+	    System.out.println("entro");
 	}
 	catch (NotBoundException e) {
 	    System.err.println("No existe el servicio solicitado en " + maq + ":" + puerto);
+	    System.exit(-1);
 	}
 	catch (MalformedURLException m) {
 	    System.err.println("No se pudo establecer conexion con el servidor: URL incorrecta");
+	    System.exit(-1);
 	}
 	catch (java.rmi.RemoteException r) {
 	    System.err.println("No se pudo establecer conexion con el servidor");
+	    System.exit(-1);
 	}
       
 	fotos cliente = new fotos();
-	cliente.run(interfaz);
+	cliente.run(interfaz,puerto);
     }
 }

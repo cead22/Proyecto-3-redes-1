@@ -22,15 +22,24 @@ public class nodo extends java.rmi.server.UnicastRemoteObject implements Interfa
     private static String directorio;
     /** computadores alcanzables desde este */
     private static Vector<String> nodos_vecinos;
+    private BufferedWriter traza;
+
 
    /** 
     * Crea un nodo a partir de un puerto y un directorio.
     * @param p puerto a traves el cual se hara la conexion.
     * @param dir directorio donde.
     */
-    public nodo(int p, String dir) throws RemoteException {
+    public nodo(int p, String dir, String t) throws RemoteException {
 	directorio = dir;
 	puerto = p;
+	try {
+	    traza = new BufferedWriter(new FileWriter(t,true));
+	}
+	catch (Exception e){
+		System.err.println("Error con la traza");
+	}
+
     }
 
     /** 
@@ -130,6 +139,14 @@ public class nodo extends java.rmi.server.UnicastRemoteObject implements Interfa
 
     public Vector<String> alcanzables (Vector<String> visitados){
 	InterfazRemota ir = null;
+	
+	try{
+	    traza.write("Consulta  A recibida desde " + mi_ip() + "\n");
+	    traza.flush();
+	}
+	catch(Exception e){
+	    System.err.println("Error al escribir en la traza");
+	}
 
 	/* marcar como visitado */
 	visitados.add(mi_ip());
@@ -152,6 +169,7 @@ public class nodo extends java.rmi.server.UnicastRemoteObject implements Interfa
 		catch (RemoteException r) {
 		    System.err.println("No se pudo establecer conexion con el servidor en " + nodos_vecinos.elementAt(i));
 		    visitados.add(nodos_vecinos.elementAt(i));
+		    System.out.println(r.getMessage());
 		}
 	    }
 	}
@@ -171,6 +189,14 @@ public class nodo extends java.rmi.server.UnicastRemoteObject implements Interfa
 	InterfazRemota ir;
 	SalidaDFS sal;
 	
+	try{
+	    traza.write("Consulta" + busqueda + "recibida desde " + mi_ip() + "\n");
+	    traza.flush();
+	}
+	catch(Exception e){
+	    System.err.println("Error al escribir en la traza");
+	}
+
 	if (archivos_xml == null) {
 	    System.err.println("Directorio " + directorio + " no existe");
 	}
@@ -297,6 +323,14 @@ public class nodo extends java.rmi.server.UnicastRemoteObject implements Interfa
 
 
     public byte[] archivo_a_bytes(String archivo) {
+	try{
+	    traza.write("Peticion de la foto " + archivo + " recibida desde " + mi_ip() + "\n");
+	    traza.flush();
+	}
+	catch(Exception e){
+	    System.err.println("Error al escribir en la traza");
+	}
+	
 	try {
 	    File foto = new File (directorio + "/" + archivo);
 	    byte [] bytes_foto  = new byte [(int)foto.length()];
@@ -359,7 +393,7 @@ public class nodo extends java.rmi.server.UnicastRemoteObject implements Interfa
 	//this.puerto = puerto;
 	//this.directorio = directorio;
 
-	InterfazRemota ir = new nodo(puerto,directorio);
+	InterfazRemota ir = new nodo(puerto,directorio,traza);
 	System.err.println("//" + java.net.InetAddress.getLocalHost().getHostAddress() +
 			   ":" + puerto + "/fotop2p");
 	Naming.rebind("//" + java.net.InetAddress.getLocalHost().getHostAddress() +

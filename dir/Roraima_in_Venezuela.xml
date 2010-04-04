@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<foto>
+<titulo>
+Roraima in Venezuela
+</titulo>
+<pelicula valor="color"/>
+<autor name="Yosemite"/>
+<descripcion>
+Roraima des del campamento base
+</descripcion>
+<palabrasClave>
+<entrada palabra="Roraima"/>
+<entrada palabra="Venezuela"/>
+<entrada palabra="Campamento"/>
+</palabrasClave>
+<exposicion tiempo="5" stop="f1.4"/>
+</foto>

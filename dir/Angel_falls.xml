@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<foto>
+<titulo>
+Kerepakupai
+</titulo>
+<pelicula valor="color"/>
+<autor name="ja-wikija"/>
+<descripcion>
+El Salto Angel
+</descripcion>
+<palabrasClave>
+<entrada palabra="Salto"/>
+<entrada palabra="Angel"/>
+<entrada palabra="Kerepakupai"/>
+<entrada palabra="Cascada"/>
+</palabrasClave>
+<exposicion tiempo="5" stop="f1.4"/>
+</foto>

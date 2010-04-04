@@ -1,83 +1,16 @@
-Consulta   c -t hola  recibida desde localhost
-Consulta   c -k sol  recibida desde localhost
-Consulta   c -k oceano  recibida desde localhost
-Consulta   c -k oceano  recibida desde localhost
-Peticion de foto    d localhost:sol.jpg  recibida desde localhost
-El archivo solicitado por localhostse envio correctamentePeticion de foto    d localhost:sol.jpg  recibida desde localhost
-El archivo solicitado por localhostse envio correctamentePeticion de foto    d localhost:sol.jpg  recibida desde localhost
-El archivo solicitado por localhostse envio correctamentePeticion de foto    d localhost:sol.jpg  recibida desde localhost
-El archivo solicitado por localhostse envio correctamentePeticion de foto    d localhost:sol.jpg  recibida desde localhost
-El archivo solicitado por localhostse envio correctamenteConsulta   c -t sol  recibida desde localhost
-Solicitud de alcanzables recibida desde localhost
-Peticion de foto    d localhost:sol.jpg  recibida desde localhost
-El archivo solicitado por localhostse envio correctamentePeticion de foto    d localhost:sol.jpg  recibida desde localhost
-El archivo solicitado por localhost se envio correctamente
-Peticion de foto    d localhost:sol.jpg  recibida desde localhost
-El archivo solicitado por localhost se envio correctamente
-Peticion de foto    d localhost:sol.jpg  recibida desde localhost
-El archivo solicitado por localhost se envio correctamente
-Peticion de foto    d localhost:sol.jpg  recibida desde localhost
-El archivo solicitado por localhost se envio correctamente
-Solicitud de alcanzables recibida desde localhost
-Solicitud de alcanzables recibida desde localhost
-Consulta   c -t sol  recibida desde localhost
-Consulta   c -t sol  recibida desde localhost
-Peticion de foto    d localhost:sol.jpg  recibida desde localhost
-El archivo solicitado por localhost se envio correctamente
-Solicitud de alcanzables recibida desde localhost
-Consulta   c -t sol  recibida desde localhost
-Consulta   c -k oceano  recibida desde localhost
-Consulta   c -t sol  recibida desde localhost
-Consulta   c -k oceano  recibida desde localhost
-Consulta   c -k pelo  recibida desde localhost
-Consulta   c -t sol  recibida desde localhost
-Consulta   c -k hola  recibida desde localhost
-Consulta   c -t pelo  recibida desde localhost
-Consulta   c -t pelo  recibida desde localhost
-Consulta   c -t sol  recibida desde localhost
-Consulta   c -t pelo  recibida desde localhost
-Consulta   c -t sol  recibida desde localhost
-Consulta   c -t pelo  recibida desde localhost
-Peticion de foto    d localhost:sol.jpg  recibida desde localhost
-El archivo solicitado por localhost se envio correctamente
-Solicitud de alcanzables recibida desde localhost
-Consulta   c -t sol  recibida desde localhost
-Solicitud de alcanzables recibida desde localhost
-Consulta   c -t sol  recibida desde localhost
-Consulta   c -k sol  recibida desde localhost
-Consulta   c -k oceano  recibida desde localhost
-Consulta   c -t sol  recibida desde localhost
-Consulta   c -t sol  recibida desde localhost
-Peticion de foto    d localhost:sol.jpg  recibida desde localhost
-El archivo solicitado por localhost se envio correctamente
-Solicitud de alcanzables recibida desde localhost
-Peticion de foto    d localhost:bla.jpg  recibida desde localhost
-El archivo solicitado por localhost se envio correctamente
-Peticion de foto    d localhost:sol.jpg  recibida desde localhost
-Peticion de foto    d localhost:sol.jpg  recibida desde localhost
-Peticion de foto    d localhost:sol.jpg  recibida desde localhost
-Peticion de foto    d localhost:sol.jpg  recibida desde localhost
-Peticion de foto    d localhost:sol.jpg  recibida desde localhost
-El archivo solicitado por localhost se envio correctamente
-Solicitud de alcanzables recibida desde localhost
-Solicitud de alcanzables recibida desde localhost
-Consulta   c -t sol  recibida desde localhost
-Consulta   c -t sol  recibida desde localhost
-Solicitud de alcanzables recibida desde localhost
-Solicitud de alcanzables recibida desde localhost
-Solicitud de alcanzables recibida desde localhost
-Solicitud de alcanzables recibida desde localhost
-Consulta   c -t y  recibida desde localhost
-Solicitud de alcanzables recibida desde localhost
-Consulta   c -t y  recibida desde localhost
-Solicitud de alcanzables recibida desde localhost
-Solicitud de alcanzables recibida desde localhost
-Peticion de foto    d localhost:sol.jpg  recibida desde localhost
-El archivo solicitado por localhost se envio correctamente
-Solicitud de alcanzables recibida desde localhost
-Solicitud de alcanzables recibida desde localhost
-Consulta   c -t y  recibida desde localhost
-Solicitud de alcanzables recibida desde localhost
-Consulta   c -t y  recibida desde localhost
-Consulta   c -t pasoifn  recibida desde localhost
-Solicitud de alcanzables recibida desde localhost
+Consulta  A recibida desde 192.168.1.102Consulta-t solrecibida desde 192.168.1.102Consulta-k solrecibida desde 192.168.1.102Consulta-k perrorecibida desde 192.168.1.102Consulta-k carlosrecibida desde 192.168.1.102Consulta  A recibida desde 192.168.1.102Consulta  A recibida desde 192.168.1.102Consulta  A recibida desde 192.168.1.102Consulta  A recibida desde 192.168.1.102Consulta  A recibida desde 192.168.1.102Consulta  A recibida desde 192.168.1.102Consulta  A recibida desde 192.168.1.102
+Consulta  A recibida desde 192.168.1.102
+Peticion de la fotosol.jpgrecibida desde 192.168.1.102
+Consulta  A recibida desde 192.168.1.102
+Consulta  A recibida desde 192.168.1.102
+Consulta  A recibida desde 192.168.1.102
+Consulta  A recibida desde 192.168.1.102
+Consulta  A recibida desde 192.168.1.102
+Consulta  A recibida desde 192.168.1.102
+Consulta-t arecibida desde 192.168.1.102
+Consulta-t solrecibida desde 192.168.1.102
+Consulta  A recibida desde 192.168.1.102
+Consulta  A recibida desde 192.168.1.102
+Consulta  A recibida desde 192.168.1.102
+Consulta  A recibida desde 192.168.1.102
+Consulta  A recibida desde 192.168.1.102
